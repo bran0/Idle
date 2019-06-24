@@ -2,10 +2,10 @@
 setInterval(checkState, 100);
 var laststate = ""
 var oldWindowsState = ""
-const homeurl = "http://www.google.com"	// URL of the new tab
+const homeurl = "https://pixelthoughts.co"	// URL of the new tab
 
 function checkState() {
-  waitTime = 300;	// Duration of idle state : 300sec = 5min
+  waitTime = 15;	// Duration of idle state : 300sec = 5min
 
   chrome.idle.queryState(waitTime, function(state) {
     if (laststate != state) {
