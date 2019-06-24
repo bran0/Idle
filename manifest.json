@@ -1,7 +1,7 @@
 {
-  "name" : "Idle - Simple Example",
+  "name" : "Chrome Screen Saver",
   "version" : "1.0.1",
-  "description" : "Demonstrates the Idle API",
+  "description" : "Chrome ScreenSaver",
   "background" : {
     "scripts": ["background.js"]
   },
