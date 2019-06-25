@@ -5,7 +5,7 @@
   "background" : {
     "scripts": ["background.js"]
   },
-  "permissions" : [ "idle" ],
+  "permissions" : [ "idle", "tabs" ],
   "browser_action" : {
     "default_icon" : "icons8-clock-24.png"
   },

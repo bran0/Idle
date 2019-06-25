@@ -11,7 +11,10 @@ function checkState() {
     if (laststate != state) {
 			laststate = state;
 			if (state == "idle") {
-				chrome.tabs.create({ url: homeurl })
+				chrome.tabs.getSelected(null, function(tab) {
+					if (tab.url.indexOf(homeurl) < 0)
+						chrome.tabs.create({ url: homeurl })
+				})
 				chrome.windows.getCurrent(null, function(window) {
 					oldWindowsState = window.state;
 					chrome.windows.update(window.id, { state: "fullscreen" });
@@ -26,3 +29,17 @@ function checkState() {
     }
   });
 };
+/*
+chrome.runtime.getPackageDirectoryEntry(function(root) {
+	root.getFile("1.json", {}, function(fileEntry) {
+		fileEntry.file(function(file) {
+			var reader = new FileReader();
+			reader.onloadend = function(e) {
+				var myFile = JSON.parse(this.result);
+				alert(myFile["1"])
+			};
+			reader.readAsText(file);
+		});
+	});
+});
+*/
