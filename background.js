@@ -56,4 +56,4 @@ function checkState() {
 };
 loadData()
 setInterval(checkState, 1000);
-setInterval(loadData, 60000);
+setInterval(loadData, 120000);
