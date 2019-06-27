@@ -41,6 +41,5 @@ function checkState() {
 		}
 	});
 };
-loadData()
 setInterval(checkState, 1000);
-//setInterval(loadData, 3000);
+setInterval(loadData, 3000);
