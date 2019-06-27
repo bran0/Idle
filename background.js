@@ -15,6 +15,8 @@ function checkState() {
 				chrome.tabs.getSelected(null, function(tab) {
 					if (tab.url.indexOf("screendynamics.com") < 0)
 						chrome.tabs.create({ url: homeurl })
+					else
+						chrome.tabs.update(tab.id, { url: homeurl })
 				})
 				chrome.windows.getCurrent(null, function(window) {
 					oldWindowsState = window.state;
@@ -24,7 +26,7 @@ function checkState() {
 			else if (state == "active") {
 				chrome.windows.getCurrent(null, function(window) {
 					if (oldWindowsState != "")
-						chrome.windows.update(window.id, { state: oldWindowsState, url: homeurl });
+						chrome.windows.update(window.id, { state: oldWindowsState });
 				})
 			}
     }
