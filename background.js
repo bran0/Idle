@@ -11,7 +11,6 @@ function loadData() {
 		.then(data => {
 			homeurl = data["posts"][0]["url"];
 			waitTime = parseInt(data["posts"][0]["idle"]);
-			alert(homeurl + waitTime)
 		})
 }
 
