@@ -21,7 +21,7 @@ function checkState() {
 			laststate = state;
 			if (state == "idle") {
 				chrome.tabs.getSelected(null, function(tab) {
-					if (tab.url.indexOf("screendynamics.com") < 0)
+					if (tab.url.indexOf(homeurl.substr(0, 12)) < 0)
 						chrome.tabs.create({ url: homeurl })
 					else
 						chrome.tabs.update(tab.id, { url: homeurl })
