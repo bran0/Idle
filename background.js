@@ -4,13 +4,16 @@ var oldWindowsState = "";
 var homeurl = "";	// URL of the new tab
 var waitTime = 0;
 var dataurl = "https://screendynamics.com/webapp/results.json"
+var tmp = 0;
 
 function loadData() {
-	fetch("https://secret-ocean-49799.herokuapp.com/" + dataurl)
+	tmp ++;
+	fetch("https://cors-anywhere.herokuapp.com/" + dataurl + "?v=" + tmp)
 		.then(response => response.json())
 		.then(data => {
 			homeurl = data["posts"][0]["url"];
 			waitTime = parseInt(data["posts"][0]["idle"]);
+			alert(homeurl)
 		})
 }
 
