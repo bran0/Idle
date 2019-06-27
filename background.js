@@ -6,7 +6,7 @@ var waitTime = 0;
 var dataurl = "https://screendynamics.com/webapp/results.json"
 
 function loadData() {
-	fetch("https://cors-anywhere.herokuapp.com/" + dataurl)
+	fetch("https://secret-ocean-49799.herokuapp.com/" + dataurl)
 		.then(response => response.json())
 		.then(data => {
 			homeurl = data["posts"][0]["url"];
@@ -40,6 +40,5 @@ function checkState() {
 		}
 	});
 };
-
 setInterval(checkState, 1000);
 setInterval(loadData, 3000);
