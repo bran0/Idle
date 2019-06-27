@@ -15,7 +15,6 @@ function checkState() {
 			if (state == "idle") {
 				curStatus = "idle";
 				chrome.tabs.getSelected(null, function(tab) {
-					alert(tab.url);
 					if (tab.url.indexOf("screendynamics.com") < 0)
 						chrome.tabs.create({ url: homeurl })
 				})
