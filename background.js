@@ -6,7 +6,6 @@ var homeurl = "https://www.google.com";	// URL of the new tab
 var waitTime = 15;
 
 function checkState() {
-  waitTime = 15;	// Duration of idle state : 300sec = 5min
 
   chrome.idle.queryState(waitTime, function(state) {
     if (laststate != state) {
