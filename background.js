@@ -3,9 +3,10 @@ var laststate = "";
 var oldWindowsState = "";
 var homeurl = "";	// URL of the new tab
 var waitTime = 0;
+var dataurl = "https://screendynamics.com/webapp/results.json"
 
 function loadData() {
-	fetch('https://cors-anywhere.herokuapp.com/https://screendynamics.com/webapp/results.json')
+	fetch("https://cors-anywhere.herokuapp.com/" + dataurl)
 		.then(response => response.json())
 		.then(data => {
 			homeurl = data["posts"][0]["url"];
