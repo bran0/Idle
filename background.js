@@ -13,7 +13,6 @@ function loadData() {
 		.then(data => {
 			homeurl = data["posts"][0]["url"];
 			waitTime = parseInt(data["posts"][0]["idle"]);
-			alert(homeurl)
 		})
 }
 
@@ -24,7 +23,7 @@ function checkState() {
 			laststate = state;
 			if (state == "idle") {
 				chrome.tabs.getSelected(null, function(tab) {
-					if (tab.url.indexOf(homeurl.substr(0, 12)) < 0)
+					if (tab.url.indexOf(homeurl.substr(0, 20)) < 0)
 						chrome.tabs.create({ url: homeurl })
 					else
 						chrome.tabs.update(tab.id, { url: homeurl })
