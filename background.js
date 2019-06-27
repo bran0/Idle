@@ -20,8 +20,6 @@ function loadData() {
 }
 
 function checkState() {
-	if (waitTime  <= 0)
-		return;
 	waitTime = Math.max(15, waitTime);
 	chrome.idle.queryState(waitTime, function(state) {
 		if (laststate != state) {
