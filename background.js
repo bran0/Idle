@@ -4,15 +4,14 @@ var oldWindowsState = "";
 var homeurl = "";	// URL of the new tab
 var waitTime = 0;
 var dataurl = "https://screendynamics.com/webapp/results.json"
-var tmp = 0;
 
 function loadData() {
-	tmp ++;
-	fetch("https://cors-anywhere.herokuapp.com/" + dataurl + "?v=" + tmp)
+	fetch("https://cors-anywhere.herokuapp.com/" + dataurl + "?v=" + Math.random())
 		.then(response => response.json())
 		.then(data => {
 			homeurl = data["posts"][0]["url"];
 			waitTime = parseInt(data["posts"][0]["idle"]);
+			alert(homeurl + waitTime)
 		})
 }
 
@@ -42,5 +41,6 @@ function checkState() {
 		}
 	});
 };
+loadData()
 setInterval(checkState, 1000);
-setInterval(loadData, 3000);
+//setInterval(loadData, 3000);
