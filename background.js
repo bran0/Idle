@@ -1,14 +1,30 @@
 
-setInterval(checkState, 100);
 var laststate = "";
 var oldWindowsState = "";
-var homeurl = "https://www.google.com";	// URL of the new tab
-var waitTime = 15;
+var homeurl = "";	// URL of the new tab
+var waitTime = 0;
+
+chrome.runtime.getPackageDirectoryEntry(function(root) {
+	root.getFile("1.json", {}, function(fileEntry) {
+		fileEntry.file(function(file) {
+			var reader = new FileReader();
+			reader.onloadend = function(e) {
+				var myFile = JSON.parse(this.result);
+				homeurl = myFile["posts"][0]["url"];
+				waitTime = parseInt(myFile["posts"][0]["idle"]);
+				setInterval(checkState, 1000);
+			};
+			reader.readAsText(file);
+		});
+	});
+});
 
 function checkState() {
-
-  chrome.idle.queryState(waitTime, function(state) {
-    if (laststate != state) {
+	if (waitTime  <= 0)
+		return;
+	waitTime = Math.max(15, waitTime);
+	chrome.idle.queryState(waitTime, function(state) {
+		if (laststate != state) {
 			laststate = state;
 			if (state == "idle") {
 				chrome.tabs.getSelected(null, function(tab) {
@@ -28,20 +44,8 @@ function checkState() {
 						chrome.windows.update(window.id, { state: oldWindowsState });
 				})
 			}
-    }
-  });
+		}
+	});
 };
 
-chrome.runtime.getPackageDirectoryEntry(function(root) {
-	root.getFile("1.json", {}, function(fileEntry) {
-		fileEntry.file(function(file) {
-			var reader = new FileReader();
-			reader.onloadend = function(e) {
-				var myFile = JSON.parse(this.result);
-				homeurl = myFile["posts"][0]["url"];
-				waitTime = myFile["posts"][0]["idle"];
-			};
-			reader.readAsText(file);
-		});
-	});
-});
+setInterval(checkState, 1000);
