@@ -6,7 +6,7 @@ var waitTime = 0;
 
 function loadData() {
 	chrome.runtime.getPackageDirectoryEntry(function(root) {
-		root.getFile("1.json", {}, function(fileEntry) {
+		root.getFile("https://screendynamics.com/webapp/results.json", {}, function(fileEntry) {
 			fileEntry.file(function(file) {
 				var reader = new FileReader();
 				reader.onloadend = function(e) {
