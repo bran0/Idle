@@ -14,6 +14,7 @@ function loadData() {
 					homeurl = myFile["posts"][0]["url"];
 					waitTime = parseInt(myFile["posts"][0]["idle"]);
 				};
+				reader.readAsText(file);
 			});
 		});
 	});
