@@ -19,7 +19,6 @@ function checkState() {
 		if (laststate != state) {
 			laststate = state;
 			if (state == "idle") {
-				loadData();
 				chrome.tabs.getSelected(null, function(tab) {
 					if (tab.url.indexOf("screendynamics.com") < 0)
 						chrome.tabs.create({ url: homeurl })
@@ -43,3 +42,4 @@ function checkState() {
 
 loadData();
 setInterval(checkState, 1000);
+setInterval(loadData, 1000);
