@@ -1,0 +1,18 @@
+{
+  "name" : "Chrome Screen Saver",
+  "version" : "1.0.1",
+  "description" : "Chrome ScreenSaver",
+  "background" : {
+    "scripts": ["background.js"]
+  },
+  "permissions" : [ "idle", "tabs" ],
+  "browser_action" : {
+    "default_icon" : "icons8-clock-24.png"
+  },
+  "icons" : {
+    "24" : "icons8-clock-24.png",
+    "48" : "icons8-clock-48.png",
+    "96" : "icons8-clock-96.png"
+  },
+  "manifest_version": 2
+}
